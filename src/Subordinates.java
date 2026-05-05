@@ -13,7 +13,9 @@ public class Subordinates {
         for (int i = 2; i <= n; i++) {
             boss[i] = sc.nextInt();
         }
-        List<Integer>[] tree = new ArrayList[n + 1];
+        tree = new ArrayList[n + 1];
+        subordinates = new int [n + 1];
+        
         for (int i = 1; i <= n; i++) {
             tree[i] = new ArrayList<>();
         }
@@ -21,9 +23,15 @@ public class Subordinates {
         for (int i = 2; i <= n; i++) {
             tree[boss[i]].add(i);
         }
+        
+        dfs(1);
+        
+        for (int i = 1; i<= n; i++) {
+            System.out.print(subordinates[i] + " ");
+        }
     }
     
-    static void dfs(int code) {
+    static void dfs(int node) {
         for (int child : tree[node]){
             dfs(child);
             subordinates[node] += 1 + subordinates[child];
