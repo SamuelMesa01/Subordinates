@@ -1,6 +1,10 @@
 import java.util.*;
 
 public class Subordinates {
+    
+    static int[] subordinates;
+    static List<Integer>[] tree;
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -18,4 +22,11 @@ public class Subordinates {
             tree[boss[i]].add(i);
         }
     }
+    
+    static void dfs(int code) {
+        for (int child : tree[node]){
+            dfs(child);
+        }
+    }
+    
 }
