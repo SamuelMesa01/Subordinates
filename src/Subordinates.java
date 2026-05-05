@@ -26,6 +26,7 @@ public class Subordinates {
     static void dfs(int code) {
         for (int child : tree[node]){
             dfs(child);
+            subordinates[node] += 1 + subordinates[child];
         }
     }
     
